@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espace Pouchkine - Premium Café</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Header */
+        header {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #d4af37; /* Gold accent */
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        .nav-links a {
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #d4af37;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-image: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80'); /* Placeholder high-quality image */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 2s ease-in;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .btn {
+            background-color: #d4af37;
+            color: #fff;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #b8860b;
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .menu {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin: 2rem 0;
+        }
+        .menu h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #1a1a1a;
+        }
+        .menu-category {
+            margin-bottom: 2rem;
+        }
+        .menu-category h3 {
+            border-bottom: 2px solid #d4af37;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+        .menu-item h4 {
+            font-weight: 500;
+        }
+        .menu-item p {
+            font-style: italic;
+            color: #666;
+            flex: 1;
+            margin: 0 1rem;
+        }
+        .price {
+            font-weight: 700;
+            color: #d4af37;
+        }
+
+        /* About */
+        .about {
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .about img {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        /* Contact */
+        .contact {
+            background-color: #1a1a1a;
+            color: #fff;
+        }
+        .contact h2 {
+            color: #d4af37;
+        }
+        .contact-info {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .contact-info div {
+            margin: 1rem;
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+            }
+            .nav-links {
+                margin-top: 1rem;
+            }
+            .nav-links li {
+                margin: 0 1rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .menu-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .menu-item p {
+                margin: 0.5rem 0;
+            }
+            .contact-info {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Espace Pouchkine</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Espace Pouchkine</h1>
+            <p>Indulge in the finest coffees, teas, and pastries in a luxurious setting.</p>
+            <button class="btn" onclick="scrollToMenu()">Explore Menu</button>
+        </div>
+    </section>
+
+    <section id="menu" class="menu fade-in">
+        <h2>Our Menu</h2>
+        <div class="menu-category">
+            <h3>Coffees</h3>
+            <div class="menu-item">
+                <h4>Espresso</h4>
+                <p>Rich and bold Italian espresso.</p>
+                <span class="price">$3.50</span>
+            </div>
+            <div class="menu-item">
+                <h4>Cappuccino</h4>
+                <p>Steamed milk with espresso and foam.</p>
+                <span class="price">$4.50</span>
+            </div>
+            <div class="menu-item">
+                <h4>Latte</h4>
+                <p>Smooth espresso with steamed milk.</p>
+                <span class="price">$4.00</span>
+            </div>
+        </div>
+        <div class="menu-category">
+            <h3>Teas</h3>
+            <div class="menu-item">
+                <h4>Earl Grey</h4>
+                <p>Classic black tea with bergamot.</p>
+                <span class="price">$3.00</span>
+            </div>
+            <div class="menu-item">
+                <h4>Green Tea</h4>
+                <p>Fresh and soothing green tea.</p>
+                <span class="price">$3.00</span>
+            </div>
+            <div class="menu-item">
+                <h4>Chai Latte</h4>
+                <p>Spiced tea with steamed milk.</p>
+                <span class="price">$4.50</span>
+            </div>
+        </div>
+        <div class="menu-category">
+            <h3>Pastries</h3>
+            <div class="menu-item">
+                <h4>Croissant</h4>
+                <p>Buttery, flaky French pastry.</p>
+                <span class="price">$3.50</span>
+            </div>
+            <div class="menu-item">
+                <h4>Éclair</h4>
+                <p>Choux pastry filled with cream.</p>
+                <span class="price">$4.50</span>
+            </div>
+            <div class="menu-item">
+                <h4>Tarte Tatin</h4>
+                <p>Caramelized apple tart.</p>
+                <span class="price">$5.00</span>
+            </div>
+        </div>
+        <div class="menu-category">
+            <h3>Sandwiches</h3>
+            <div class="menu-item">
+                <h4>Club Sandwich</h4>
+                <p>Turkey, bacon, lettuce, tomato.</p>
+                <span class="price">$8.00</span>
+            </div>
+            <div class="menu-item">
+                <h4>Panini</h4>
+                <p>Grilled sandwich with cheese and veggies.</p>
+                <span class="price">$7.50</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about fade-in">
+        <h2>About Us</h2>
+        <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Café Interior"> <!-- Placeholder image -->
+        <p>Espace Pouchkine is a premium café inspired by the elegance of Russian literature and Parisian charm. We offer an exquisite selection of beverages and pastries in a luxurious atmosphere, perfect for relaxation and indulgence.</p>
+    </section>
+
+    <section id="contact" class="contact fade-in">
+        <h2>Contact Us</h2>
+        <div class="contact-info">
+            <div>
+                <h3>Address</h3>
+                <p>123 Rue de la Paix, Paris, France</p>
+            </div>
+            <div>
+                <h3>Phone</h3>
+                <p>+33 1 23 45 67 89</p>
+            </div>
+            <div>
+                <h3>Email</h3>
+                <p>info@espacepouchkine.com</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Espace Pouchkine. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Function to scroll to menu
+        function scrollToMenu() {
+            document.querySelector('#menu').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Fade-in animation on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        });
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
